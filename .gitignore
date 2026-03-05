@@ -1,0 +1,12 @@
+﻿# Python (dunno ngano ipa remove ni)
+__pycache__/
+*.pyc
+
+# VS Code
+.vscode/
+
+# Virtual Environment
+venv/
+env/
+
+db.sqlite3
