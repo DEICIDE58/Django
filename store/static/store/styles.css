@@ -155,8 +155,7 @@ form button:hover {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 } 
-*/
-/* Import a premium modern font */
+*//* --- PREMIUM MINIMALIST THEME --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
@@ -170,6 +169,7 @@ form button:hover {
     --radius: 12px;
 }
 
+/* --- Global Reset --- */
 * {
     margin: 0;
     padding: 0;
@@ -194,59 +194,65 @@ header {
 }
 
 header h1 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
     margin-bottom: 1rem;
     color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 nav {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 nav .btn {
     background: transparent;
     color: var(--text-muted);
     border: none;
-    padding: 0;
+    padding: 5px 10px;
     font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
 }
 
 nav .btn:hover {
     color: var(--text-main);
-    background: transparent;
+    background: #f3f4f6;
+    transform: none;
 }
 
-/* --- Layout --- */
+/* --- Layout Containers --- */
 .container {
     width: 92%;
     max-width: 1100px;
-    margin: 2rem auto;
+    margin: 2.5rem auto;
 }
 
 h1, h2 {
     font-weight: 600;
     margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
 }
 
 /* --- Product Grid & Cards --- */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
 }
 
 .product-card {
     background-color: var(--card-bg);
-    padding: 1.5rem;
+    padding: 1.8rem;
     border-radius: var(--radius);
     border: 1px solid var(--border-color);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
 }
 
 .product-card:hover {
@@ -256,56 +262,64 @@ h1, h2 {
 }
 
 .product-card h2 {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     margin-bottom: 0.5rem;
 }
 
 .product-card p {
     color: var(--text-muted);
     font-size: 0.9rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
 }
 
-/* --- Buttons --- */
+.product-card img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* --- Buttons & Button Groups --- */
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: auto; /* Pushes buttons to the bottom of the card */
+}
+
 .btn, button {
+    flex: 1;
     display: inline-block;
+    text-align: center;
     background-color: var(--accent);
     color: white;
-    padding: 10px 22px;
-    border: none;
+    padding: 12px 15px;
+    border: 1.5px solid var(--accent);
     border-radius: 8px;
     cursor: pointer;
     text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 500;
-    transition: transform 0.2s, opacity 0.2s;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    transition: all 0.25s ease;
 }
 
-.btn:hover {
-    opacity: 0.9;
-    transform: scale(1.02);
-}
-
-/* Secondary Button (for details) */
+/* Specific Style for "View Details" (The Ghost Button) */
 .product-card a[href*="detail"] {
-    background-color: #f3f4f6;
-    color: var(--text-main);
-    margin-right: 8px;
+    background-color: transparent;
+    color: var(--accent);
 }
 
-/* --- Details Page --- */
-.product-detail-container {
-    background: white;
-    padding: 3rem;
-    border-radius: var(--radius);
-    border: 1px solid var(--border-color);
+.btn:hover, button:hover {
+    background-color: var(--accent);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* --- Cart & Lists --- */
-/* Turning your <p> items into clean rows */
+/* --- Cart, Orders, & Details Tables --- */
 div[block="content"] p, .orders-list {
     background: white;
-    padding: 1.2rem;
+    padding: 1.2rem 1.5rem;
     border-radius: 10px;
     margin-bottom: 0.8rem;
     border: 1px solid var(--border-color);
@@ -314,15 +328,57 @@ div[block="content"] p, .orders-list {
     align-items: center;
 }
 
+.orders-list {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 .total, h3 {
     text-align: right;
     margin-top: 2rem;
     font-weight: 600;
+    font-size: 1.4rem;
 }
 
-/* --- Responsive --- */
+/* --- Forms (Login / Register) --- */
+form {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: var(--radius);
+    max-width: 420px;
+    margin: 4rem auto;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: #f9fafb;
+    font-size: 0.95rem;
+}
+
+form button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* --- Success Messages --- */
+.success-message {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #10b981;
+    margin-top: 50px;
+    font-weight: 500;
+}
+
+/* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
     .product-grid { grid-template-columns: 1fr; }
     header h1 { text-align: center; }
     nav { justify-content: center; }
+    .btn-group { flex-direction: column; }
 }
