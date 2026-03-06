@@ -1,5 +1,5 @@
 
-* {
+/** {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -80,7 +80,7 @@ button:hover, .btn:hover {
 */
 /* Cart Table */
 
-
+/*
 table {
     width: 100%;
     border-collapse: collapse;
@@ -155,3 +155,181 @@ form button:hover {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 } 
+*/
+
+/* Import a modern, clean font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+    --bg-color: #fcfcfc;
+    --text-main: #1a1a1a;
+    --text-muted: #6b7280;
+    --accent: #111827; /* Sophisticated dark charcoal */
+    --border-color: #e5e7eb;
+    --white: #ffffff;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem 0;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    margin-bottom: 1rem;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+nav span {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-left: auto; /* Pushes "Hello, User" to the right */
+}
+
+hr {
+    display: none; /* Removing the line for a cleaner look */
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    background-color: var(--white);
+    color: var(--text-main);
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+}
+
+/* Specific styling for the primary "Add to Cart" or "Checkout" */
+.product-card .btn:last-child, 
+a[href*="checkout"], 
+button[type="submit"] {
+    background-color: var(--accent);
+    color: var(--white);
+    border: none;
+}
+
+/* --- Product Grid & Cards --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.product-card {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: #d1d5db;
+}
+
+.product-card h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.product-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.product-card p:nth-of-type(2) { /* This targets the Price line */
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 1rem;
+}
+
+/* --- Cart & Orders --- */
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.orders-list {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+}
+
+.orders-list p {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Styling for the cart items (since they aren't in a table yet) */
+div[block="content"] p {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+}
+
+/* --- Responsive Tweaks --- */
+@media (max-width: 640px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        justify-content: center;
+    }
+}
