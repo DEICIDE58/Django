@@ -155,18 +155,16 @@ form button:hover {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 } 
-*/
-/* 1. Import Font */
+*//* Import a clean, modern font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
-/* 2. Variables for easy editing */
 :root {
-    --bg-color: #fcfaf8;
-    --card-bg: #ffffff;
+    --bg: #fcfcfc;
+    --white: #ffffff;
     --text-main: #1a1a1a;
-    --text-muted: #6b7280;
-    --accent: #2d3436;
-    --border-color: #e5e7eb;
+    --text-muted: #666666;
+    --accent: #111827; /* Sophisticated Charcoal */
+    --border: #eeeeee;
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     --radius: 12px;
 }
@@ -175,160 +173,165 @@ form button:hover {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
 }
 
 body {
-    background-color: var(--bg-color);
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
     color: var(--text-main);
     line-height: 1.6;
 }
 
-/* 3. Header & Navigation */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Navigation & Header --- */
 header {
-    background-color: var(--card-bg);
-    border-bottom: 1px solid var(--border-color);
+    background: var(--white);
     padding: 1.5rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 3rem;
 }
 
 header h1 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 600;
+    letter-spacing: -0.5px;
     margin-bottom: 1rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 nav {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-nav .btn {
-    background: transparent;
+nav span {
+    font-size: 0.9rem;
     color: var(--text-muted);
-    border: none;
-    padding: 0;
-    font-weight: 500;
+    margin-left: auto; /* Pushes username to the right */
 }
 
-nav .btn:hover {
+hr { border: none; border-top: 1px solid var(--border); margin: 15px 0; }
+
+/* --- Buttons & Links --- */
+.btn, button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border);
+    background: var(--white);
     color: var(--text-main);
 }
 
-/* 4. Layout */
-.container {
-    width: 92%;
-    max-width: 1100px;
-    margin: 2rem auto;
+/* Primary Button Action */
+.btn:hover, button:hover {
+    background: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
+    transform: translateY(-1px);
 }
 
-h1, h2 { font-weight: 600; margin-bottom: 1.5rem; }
-
-/* 5. Product Grid & Cards */
+/* --- Product Grid & Cards --- */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
 }
 
 .product-card {
-    background-color: var(--card-bg);
-    padding: 1.5rem;
+    background: var(--white);
+    padding: 2rem;
     border-radius: var(--radius);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .product-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+    box-shadow: var(--shadow);
+    transform: translateY(-5px);
     border-color: #d1d5db;
 }
 
-/* 6. Buttons & Button Groups */
-.btn-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 1.5rem;
-}
-
-.btn, button {
-    flex: 1;
-    text-align: center;
-    background-color: var(--accent);
-    color: white;
-    padding: 10px 15px;
-    border: 1px solid var(--accent);
-    border-radius: 8px;
-    font-size: 0.8rem;
+.product-card h2 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
     font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
 }
 
-/* "View Details" (Ghost Button) */
-a[href*="detail"] {
-    background-color: transparent;
-    color: var(--accent);
-    border: 1.5px solid var(--accent);
+.product-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
 }
 
-a[href*="detail"]:hover {
-    background-color: var(--accent);
-    color: white;
-}
+/* --- Product Detail Page --- */
+.container h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+.container p { margin-bottom: 1rem; }
 
-.btn:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-}
+/* --- Cart & Orders --- */
+h2 { font-weight: 600; margin-bottom: 2rem; }
 
-/* 7. Cart & Order Lists */
-/* This styles your cart paragraph tags to look like rows */
+/* Style for individual cart items (rendered as <p> in your HTML) */
 div[block="content"] p, .orders-list {
-    background: white;
-    padding: 1.2rem;
+    background: var(--white);
+    padding: 1.25rem 1.5rem;
     border-radius: 10px;
-    margin-bottom: 0.8rem;
-    border: 1px solid var(--border-color);
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.total, h3 {
-    text-align: right;
+.orders-list { flex-direction: column; align-items: flex-start; }
+
+.orders-list p { border: none; padding: 0; margin-bottom: 5px; background: transparent; }
+
+/* Checkout Link Style */
+a[href*="checkout"] {
+    display: inline-block;
     margin-top: 2rem;
+    padding: 12px 30px;
+    background: var(--accent);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
     font-weight: 600;
 }
 
-/* 8. Forms */
+/* --- Forms (Login/Register) --- */
 form {
     background: white;
-    padding: 2rem;
-    border-radius: var(--radius);
-    border: 1px solid var(--border-color);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
     max-width: 400px;
-    margin: 2rem auto;
+    margin: 3rem auto;
 }
 
 form input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: #f9fafb;
 }
 
-/* 9. Responsive */
-@media (max-width: 768px) {
+/* --- Mobile --- */
+@media (max-width: 600px) {
     .product-grid { grid-template-columns: 1fr; }
+    header h1 { text-align: center; }
     nav { justify-content: center; }
 }
