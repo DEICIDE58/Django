@@ -155,17 +155,19 @@ form button:hover {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 } 
-*//* Import a clean, modern font */
+*/
+
+/* Import a modern, clean font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-    --bg: #fcfcfc;
+    --bg-color: #f8f9fa;
     --white: #ffffff;
-    --text-main: #1a1a1a;
-    --text-muted: #666666;
-    --accent: #111827; /* Sophisticated Charcoal */
-    --border: #eeeeee;
-    --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    --text-dark: #1a1a1a;
+    --text-muted: #6c757d;
+    --accent: #2d3436; /* Dark slate for elegance */
+    --border: #e9ecef;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     --radius: 12px;
 }
 
@@ -173,165 +175,152 @@ form button:hover {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg);
-    color: var(--text-main);
-    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    line-height: 1.7;
 }
 
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* --- Navigation & Header --- */
+/* --- Header & Nav --- */
 header {
-    background: var(--white);
-    padding: 1.5rem 0;
+    background-color: var(--white);
+    padding: 2rem 0;
     border-bottom: 1px solid var(--border);
-    margin-bottom: 3rem;
+    text-align: left; /* More modern than center */
 }
 
 header h1 {
     font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: -0.5px;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
 }
 
 nav {
     display: flex;
+    gap: 1.5rem;
     align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
 }
 
-nav span {
-    font-size: 0.9rem;
+nav a.btn {
+    background: transparent;
     color: var(--text-muted);
-    margin-left: auto; /* Pushes username to the right */
-}
-
-hr { border: none; border-top: 1px solid var(--border); margin: 15px 0; }
-
-/* --- Buttons & Links --- */
-.btn, button {
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 0.85rem;
+    padding: 0;
     font-weight: 500;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: 1px solid var(--border);
-    background: var(--white);
-    color: var(--text-main);
+    border: none;
 }
 
-/* Primary Button Action */
-.btn:hover, button:hover {
-    background: var(--accent);
-    color: var(--white);
-    border-color: var(--accent);
-    transform: translateY(-1px);
+nav a.btn:hover {
+    color: var(--text-dark);
+    background: transparent;
+}
+
+hr {
+    display: none; /* Removing the old-school horizontal line */
+}
+
+/* --- Layout --- */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 3rem auto;
+}
+
+h1, h2 {
+    margin-bottom: 2rem;
+    font-weight: 600;
 }
 
 /* --- Product Grid & Cards --- */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2.5rem;
-    margin-top: 2rem;
+    gap: 2rem;
 }
 
 .product-card {
-    background: var(--white);
+    background-color: var(--white);
     padding: 2rem;
     border-radius: var(--radius);
     border: 1px solid var(--border);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
 }
 
 .product-card:hover {
-    box-shadow: var(--shadow);
     transform: translateY(-5px);
-    border-color: #d1d5db;
+    box-shadow: var(--shadow);
 }
 
 .product-card h2 {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     margin-bottom: 0.5rem;
-    font-weight: 600;
 }
 
 .product-card p {
-    font-size: 0.9rem;
     color: var(--text-muted);
+    font-size: 0.95rem;
     margin-bottom: 1rem;
 }
 
-/* --- Product Detail Page --- */
-.container h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
-.container p { margin-bottom: 1rem; }
+/* --- Buttons --- */
+button, .btn {
+    display: inline-block;
+    background-color: var(--accent);
+    color: var(--white);
+    padding: 10px 22px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
 
-/* --- Cart & Orders --- */
-h2 { font-weight: 600; margin-bottom: 2rem; }
+button:hover, .btn:hover {
+    opacity: 0.85;
+}
 
-/* Style for individual cart items (rendered as <p> in your HTML) */
+/* Subtle style for secondary buttons (like View Details) */
+.product-card a[href*="detail"] {
+    background: transparent;
+    color: var(--text-dark);
+    border: 1px solid var(--border);
+    margin-right: 8px;
+}
+
+/* --- Cart & Order Lists --- */
+/* Styling the simple <p> tags in cart.html */
 div[block="content"] p, .orders-list {
     background: var(--white);
-    padding: 1.25rem 1.5rem;
-    border-radius: 10px;
-    margin-bottom: 0.75rem;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
     border: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.orders-list { flex-direction: column; align-items: flex-start; }
+.orders-list p {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
 
-.orders-list p { border: none; padding: 0; margin-bottom: 5px; background: transparent; }
-
-/* Checkout Link Style */
-a[href*="checkout"] {
-    display: inline-block;
+.total, h3 {
     margin-top: 2rem;
-    padding: 12px 30px;
-    background: var(--accent);
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
+    font-size: 1.4rem;
+    text-align: right;
 }
 
-/* --- Forms (Login/Register) --- */
-form {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    max-width: 400px;
-    margin: 3rem auto;
-}
-
-form input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: #f9fafb;
-}
-
-/* --- Mobile --- */
-@media (max-width: 600px) {
-    .product-grid { grid-template-columns: 1fr; }
-    header h1 { text-align: center; }
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    header { text-align: center; }
     nav { justify-content: center; }
+    .product-grid { grid-template-columns: 1fr; }
 }
