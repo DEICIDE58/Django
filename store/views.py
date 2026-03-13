@@ -20,15 +20,18 @@ def product_detail(request, pk):
 # Add to Cart
 @login_required
 def add_to_cart(request, pk):
-    product = get_object_or_404(Product, pk=pk)
+    product = get_object_or_404(Product, pk=pk) 
     cart_item, created = Cart.objects.get_or_create(
-        user=request.user,
+        user=request.user, 
         product=product
     )
+    
     if not created:
         cart_item.quantity += 1
         cart_item.save()
+        
     return redirect('cart')
+
 
 
 # Cart View
@@ -43,7 +46,7 @@ def cart_view(request):
 @login_required
 #@require_POST
 def remove_from_cart(request, pk):
-    item = get_object_or_404(Cart, pk=pk) # user=request.user
+    item = get_object_or_404(Cart, pk=pk, user=request.user)
     item.delete()
     return redirect('cart')
 
