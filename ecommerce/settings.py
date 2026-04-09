@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ve$#(zbwc2dgo(lafm^&6u@ddm4jf*te$i1g^08$8@=$l9u_#p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.137.1', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -44,6 +44,7 @@ LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media'
+STATIC_URL = '/static/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

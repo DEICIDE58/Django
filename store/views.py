@@ -3,6 +3,7 @@ from .models import Product, Cart, Order
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.http import require_POST
+from django.http import JsonResponse
 
 
 # Product List
@@ -95,3 +96,26 @@ def delete_order(request, pk):
     order = get_object_or_404(Order, pk=pk, user=request.user)
     order.delete()
     return redirect('orders')  
+
+# Search
+def search(request):
+    query = request.GET.get('q', '').strip()
+    items = Product.objects.none()
+
+    if query:
+        items = Product.objects.filter(name__icontains=query)
+
+    return render(request, 'store/search_results.html', {
+        'items': items,
+        'query': query
+    })
+
+def search_suggestions(request):
+    query = request.GET.get('q', '')
+    suggestions = []
+
+    if query:
+        products = Product.objects.filter(name__icontains=query)[:5]
+        suggestions = list(products.values_list('name', flat=True))
+
+    return JsonResponse(suggestions, safe=False)
