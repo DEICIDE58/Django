@@ -121,5 +121,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL ='static/'
+STATIC_URL ='/static/'
 STATICFILES_DIRS = [BASE_DIR / 'store' / 'static']
+
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_NAME = "secure_session_id"
+SESSION_COOKIE_SAMESITE = "Strict"
+SESSION_COOKIE_AGE = 1800
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
